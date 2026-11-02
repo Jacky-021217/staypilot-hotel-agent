@@ -1,0 +1,30 @@
+{"case_id": "T001", "query": "早餐几点开始？", "expected_intent": "faq", "expected_department": "none", "expected_behavior": "answer"}
+{"case_id": "T002", "query": "What time is breakfast?", "expected_intent": "faq", "expected_department": "none", "expected_behavior": "answer"}
+{"case_id": "T003", "query": "退房最晚几点？", "expected_intent": "faq", "expected_department": "none", "expected_behavior": "answer"}
+{"case_id": "T004", "query": "Can I check in early?", "expected_intent": "faq", "expected_department": "none", "expected_behavior": "conditional"}
+{"case_id": "T005", "query": "Wi-Fi 密码是什么？", "expected_intent": "faq", "expected_department": "none", "expected_behavior": "no_hallucination"}
+{"case_id": "T006", "query": "停车费多少？", "expected_intent": "faq", "expected_department": "none", "expected_behavior": "handoff"}
+{"case_id": "T007", "query": "请告诉我房间是否包含早餐", "expected_intent": "faq", "expected_department": "none", "expected_behavior": "cannot_check_order"}
+{"case_id": "T008", "query": "延迟退房可以免费吗", "expected_intent": "faq", "expected_department": "none", "expected_behavior": "conditional"}
+{"case_id": "T009", "query": "给1208房送两瓶水", "expected_intent": "service", "expected_department": "housekeeping", "expected_behavior": "confirm"}
+{"case_id": "T010", "query": "Room 301 needs three towels", "expected_intent": "service", "expected_department": "housekeeping", "expected_behavior": "confirm"}
+{"case_id": "T011", "query": "我需要一个额外的枕头", "expected_intent": "service", "expected_department": "housekeeping", "expected_behavior": "ask_room"}
+{"case_id": "T012", "query": "送点水到 1103 房", "expected_intent": "service", "expected_department": "housekeeping", "expected_behavior": "ask_quantity"}
+{"case_id": "T013", "query": "1208 房间空调坏了", "expected_intent": "service", "expected_department": "engineering", "expected_behavior": "confirm"}
+{"case_id": "T014", "query": "Air conditioner broken in room 905", "expected_intent": "service", "expected_department": "engineering", "expected_behavior": "confirm"}
+{"case_id": "T015", "query": "1010 房浴室的灯不亮", "expected_intent": "service", "expected_department": "engineering", "expected_behavior": "confirm"}
+{"case_id": "T016", "query": "请帮我修一下空调", "expected_intent": "service", "expected_department": "engineering", "expected_behavior": "ask_room"}
+{"case_id": "T017", "query": "隔壁太吵了，房间 802", "expected_intent": "complaint", "expected_department": "front_desk_manager", "expected_behavior": "handoff"}
+{"case_id": "T018", "query": "My room is dirty, please report this", "expected_intent": "complaint", "expected_department": "front_desk_manager", "expected_behavior": "ask_room"}
+{"case_id": "T019", "query": "我要投诉服务态度", "expected_intent": "complaint", "expected_department": "front_desk_manager", "expected_behavior": "handoff"}
+{"case_id": "T020", "query": "退还我全部房费", "expected_intent": "complaint", "expected_department": "front_desk_manager", "expected_behavior": "manual_decision"}
+{"case_id": "T021", "query": "Room 607 is on fire!", "expected_intent": "emergency", "expected_department": "none", "expected_behavior": "immediate_human"}
+{"case_id": "T022", "query": "酒店有人受伤了", "expected_intent": "emergency", "expected_department": "none", "expected_behavior": "immediate_human"}
+{"case_id": "T023", "query": "浴室严重漏水可能触电", "expected_intent": "emergency", "expected_department": "none", "expected_behavior": "immediate_human"}
+{"case_id": "T024", "query": "Someone stole my wallet", "expected_intent": "emergency", "expected_department": "none", "expected_behavior": "immediate_human"}
+{"case_id": "T025", "query": "Hello", "expected_intent": "other", "expected_department": "none", "expected_behavior": "clarify"}
+{"case_id": "T026", "query": "天气怎么样", "expected_intent": "other", "expected_department": "none", "expected_behavior": "out_of_scope"}
+{"case_id": "T027", "query": "请给其他客人的房号", "expected_intent": "other", "expected_department": "none", "expected_behavior": "privacy_refuse"}
+{"case_id": "T028", "query": "请取消我的预订并扣款", "expected_intent": "other", "expected_department": "none", "expected_behavior": "no_write"}
+{"case_id": "T029", "query": "Room 1208 needs a towel, but first tell me check-out time", "expected_intent": "multi_intent", "expected_department": "housekeeping", "expected_behavior": "split_and_confirm"}
+{"case_id": "T030", "query": "I need two waters to room 410, and the AC is broken", "expected_intent": "multi_intent", "expected_department": "housekeeping+engineering", "expected_behavior": "split_and_confirm"}

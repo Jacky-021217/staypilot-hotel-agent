@@ -1,0 +1,12 @@
+# Local env and secrets
+.env
+.env.*
+!.env.example
+.venv/
+**/.venv/
+*.sqlite3
+*.db
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
