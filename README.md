@@ -81,22 +81,40 @@
 
 ```mermaid
 flowchart TD
-    A[住客自然语言输入 / Guest message] --> B[Dify Chatflow / 意图分类]
-    B -->|FAQ| C[Knowledge Retrieval / 双语政策]
-    C --> D[LLM 基于证据作答]
-    D --> E[Answer]
-    B -->|客房服务或报修| F[参数提取与字段校验]
-    F --> G{房号及必要信息齐全？}
-    G -->|否| H[追问缺失信息]
-    G -->|是| I{住客明确确认？}
-    I -->|否| J[不创建工单]
-    I -->|是| K[HTTP POST /tickets]
-    K --> L[FastAPI / 校验与认证]
-    L --> M[(SQLite / 模拟工单)]
-    L --> N[返回真实接口结果和 ticket_id]
-    N --> E
-    B -->|投诉 / 紧急情况| O[人工处理建议 / 紧急提示]
-    B -->|其他| P[澄清或能力范围说明]
+    A["住客自然语言输入"] --> B{"Dify 意图分类"}
+
+    B -->|FAQ| C["Knowledge Retrieval"]
+    C --> D["LLM 基于知识库回答"]
+    D --> E["直接回复"]
+
+    B -->|客房服务 / 报修| F["Parameter Extractor"]
+    F --> G["VALIDATE TICKET"]
+    G --> H{"必要参数齐全？"}
+
+    H -->|否| I["提示补充信息"]
+    H -->|是| J{"Human Input 用户确认"}
+
+    J -->|拒绝| K["取消请求"]
+    J -->|超时| L["提示确认超时"]
+    J -->|批准| M["BUILD TICKET PAYLOAD"]
+
+    M --> N["HTTP POST /tickets"]
+    N -->|请求异常| O["提交异常提示"]
+    N -->|收到响应| P{"HTTP 状态码检查"}
+
+    P -->|不符合成功条件| Q["提交失败提示"]
+    P -->|符合成功条件| R["PARSE TICKET RESPONSE"]
+
+    R --> S{"返回数据有效且 success 为 true？"}
+    S -->|否| T["响应校验失败提示"]
+    S -->|是| U["返回工单编号与状态"]
+
+    B -->|投诉| V["投诉处理建议"]
+    B -->|紧急情况| W["紧急处理与人工协助提示"]
+    B -->|其他| X["澄清或能力范围说明"]
+
+    N -.-> Y["FastAPI 工单服务"]
+    Y -.-> Z[("SQLite 工单数据库")]
 ```
 
 这是**目标业务架构**；Dify 节点连接和实际功能以你的工作流版本为准。HTTP 节点的固定流程编排不等于模型自主选择工具，不应直接称为动态 Tool Calling。
